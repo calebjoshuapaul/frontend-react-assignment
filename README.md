@@ -56,4 +56,7 @@ We will also be awarding bonus points based on your:
 ## Advice
 The assignments above are meant to test your ability to write code in a modular and reusable way while creating abstractions at the right level. The main goal is for your app to work well. But, as a front-end developer, you are also expected to build UIs that look good, too. You are free to take advantage of component libraries like [MaterialUI](https://mui.com/getting-started/usage/) or [ChakraUI](https://chakra-ui.com/).  But if you believe that there is a good reason to deviate, don't hesitate to do so. Just be prepared to explain why your solution is better.
 
-Once you are done completing the assignment please email `ajaykarthik@urbanmatrix.co.in` with the link to your github repository (Please make sure it's set public so that we can go through your code). Please feel free to contact us for additional info.
+## Submission
+All of your code is supposed to be uploaded to your github account. Once you are done completing the assignment please email `ajaykarthik@urbanmatrix.co.in` with the link to your github repository (Please make sure it's set public so that we can go through your code). 
+
+Please feel free to contact us for additional info.
