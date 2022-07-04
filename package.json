@@ -9,16 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "11.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-map-gl": "^6.1.17"
+    "next": "12.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-map-gl": "^7.0.16"
   },
   "devDependencies": {
-    "@types/react": "17.0.31",
-    "@types/react-map-gl": "^6.1.1",
-    "eslint": "^8.0.1",
-    "eslint-config-next": "11.1.2",
-    "typescript": "4.4.4"
+    "@types/node": "18.0.1",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "eslint": "8.19.0",
+    "eslint-config-next": "12.2.0",
+    "typescript": "4.7.4"
   }
 }
