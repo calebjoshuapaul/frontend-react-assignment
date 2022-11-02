@@ -4,6 +4,7 @@ import { BookmarksProvider } from "../context/BookmarksContext";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
 import styles from "../styles/Home.module.css";
+import { Paper } from "@mui/material";
 
 const Home: NextPage = () => {
   return (
@@ -23,12 +24,14 @@ const Home: NextPage = () => {
           Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
-        <div className={styles.gridContainer}>
+        {/* <Paper> */}
+        <Paper className={styles.gridContainer}>
           <BookmarksProvider>
             <ListComponent className={styles.item} />
             <MapComponent className={styles.item} />
           </BookmarksProvider>
-        </div>
+          {/* </div> */}
+        </Paper>
       </main>
     </div>
   );
