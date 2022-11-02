@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { BookmarksProvider } from "../context/BookmarksContext";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
 import styles from "../styles/Home.module.css";
@@ -23,8 +24,10 @@ const Home: NextPage = () => {
           <code className={styles.code}>pages/index.js</code>
         </p>
         <div className={styles.gridContainer}>
-          <ListComponent className={styles.item} />
-          <MapComponent className={styles.item} />
+          <BookmarksProvider>
+            <ListComponent className={styles.item} />
+            <MapComponent className={styles.item} />
+          </BookmarksProvider>
         </div>
       </main>
     </div>
