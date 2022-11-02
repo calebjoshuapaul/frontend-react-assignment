@@ -1,5 +1,10 @@
+import { Button } from "@mui/material";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import React, { useContext } from "react";
 import { BookmarksContext } from "../context/BookmarksContext";
+import styles from "./ListComponent.module.css";
 
 type Props = {
   className?: string;
@@ -31,16 +36,26 @@ const ListComponent = (props: Props): JSX.Element => {
   return (
     <div className={props.className}>
       <h3>Bookmarked Place</h3>
-      <ul>
+      <List>
         {bookmarks.map((bookmark: Bookmark, index: number) => {
           return (
-            <li key={index}>
-              {bookmark.name} |{" "}
-              <span onClick={handleRemoveBookmark}>Remove</span>
-            </li>
+            <>
+              <ListItem key={index} className={styles.listItem}>
+                {bookmark.name}
+                <Button
+                  size="small"
+                  color="error"
+                  variant="outlined"
+                  onClick={handleRemoveBookmark}
+                >
+                  Remove
+                </Button>
+              </ListItem>
+              <Divider />
+            </>
           );
         })}
-      </ul>
+      </List>
     </div>
   );
 };
