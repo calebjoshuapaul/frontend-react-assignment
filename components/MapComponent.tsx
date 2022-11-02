@@ -1,4 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+} from "react";
 import Head from "next/head";
 import Map, {
   FullscreenControl,
@@ -6,6 +12,7 @@ import Map, {
   Marker,
   NavigationControl,
   ScaleControl,
+  MapRef,
 } from "react-map-gl";
 import { BookmarksContext } from "../context/BookmarksContext";
 import { Button } from "@mui/material";
@@ -26,10 +33,22 @@ This component is responsible for rendering the map. This component has to show 
 markers bookmarked by users.
 */
 const MapComponent = (props: MapComponentProps): JSX.Element => {
-  const { bookmarks, setBookmarks } = useContext(BookmarksContext);
+  const { bookmarks, setBookmarks, travelTo } = useContext(BookmarksContext);
 
   const [markerLat, setMarkerLat] = useState(18.37148);
   const [markerLng, setMarkerLng] = useState(78.07017);
+
+  const mapRef = useRef<MapRef>();
+
+  useEffect(() => {
+    mapRef.current?.flyTo({
+      center: [travelTo.Lng, travelTo.Lat],
+      zoom: 8,
+      duration: 2000,
+    });
+  }, [travelTo]);
+
+  console.log(mapRef.current);
 
   const handleAddBookmark = () => {
     const bookmarkToAdd = prompt("Give your bookmark a name");
@@ -80,6 +99,7 @@ const MapComponent = (props: MapComponentProps): JSX.Element => {
         style={{ width: 600, height: 400 }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         doubleClickZoom={false}
+        ref={mapRef}
         onDblClick={(evt) => handleDblClick(evt)}
       >
         <GeolocateControl />

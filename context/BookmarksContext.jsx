@@ -16,7 +16,9 @@ export const BookmarksProvider = ({ children }) => {
     },
   ]);
 
-  const value = { bookmarks, setBookmarks };
+  const [travelTo, setTravelTo] = useState({});
+
+  const value = { bookmarks, setBookmarks, travelTo, setTravelTo };
 
   return (
     <BookmarksContext.Provider value={value}>

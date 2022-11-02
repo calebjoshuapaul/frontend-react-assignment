@@ -21,7 +21,7 @@ This component has to show list of bookmared places by the user. And it has to b
 Additonally when user clicks on the place it has to show the details of the place and zoom to the corresponding marker on the MapComponent.
 */
 const ListComponent = (props: Props): JSX.Element => {
-  const { bookmarks, setBookmarks } = useContext(BookmarksContext);
+  const { bookmarks, setBookmarks, setTravelTo } = useContext(BookmarksContext);
 
   const handleRemoveBookmark = (e: any) => {
     const bookmarkToRemove = e.target.parentElement.firstChild.textContent;
@@ -33,15 +33,28 @@ const ListComponent = (props: Props): JSX.Element => {
     );
   };
 
+  const handleCameraTransition = (e: any) => {
+    const [travelTo] = bookmarks.filter(
+      (bookmark: Bookmark) => bookmark.name === e.target.textContent
+    );
+
+    setTravelTo(travelTo);
+  };
+
   return (
     <div className={props.className}>
       <h3>Bookmarked Place</h3>
       <List>
         {bookmarks.map((bookmark: Bookmark, index: number) => {
           return (
-            <>
-              <ListItem key={index} className={styles.listItem}>
-                {bookmark.name}
+            <React.Fragment key={index}>
+              <ListItem className={styles.listItem}>
+                <span
+                  onClick={handleCameraTransition}
+                  style={{ cursor: "pointer" }}
+                >
+                  {bookmark.name}
+                </span>
                 <Button
                   size="small"
                   color="error"
@@ -52,7 +65,7 @@ const ListComponent = (props: Props): JSX.Element => {
                 </Button>
               </ListItem>
               <Divider />
-            </>
+            </React.Fragment>
           );
         })}
       </List>
