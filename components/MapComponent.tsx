@@ -1,7 +1,14 @@
 import React, { useContext, useState } from "react";
 import Head from "next/head";
-import Map, { Marker } from "react-map-gl";
+import Map, {
+  FullscreenControl,
+  GeolocateControl,
+  Marker,
+  NavigationControl,
+  ScaleControl,
+} from "react-map-gl";
 import { BookmarksContext } from "../context/BookmarksContext";
+import { Button } from "@mui/material";
 
 interface MapComponentProps {
   className?: string;
@@ -36,6 +43,9 @@ const MapComponent = (props: MapComponentProps): JSX.Element => {
           Lng: markerLng,
         },
       ]);
+
+      setMarkerLat(18.37148);
+      setMarkerLng(78.07017);
     } else alert("Please provide a name");
   };
 
@@ -58,11 +68,6 @@ const MapComponent = (props: MapComponentProps): JSX.Element => {
     <div className={props.className}>
       <Head>
         <title>Test</title>
-        <link
-          href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
-          rel="stylesheet"
-          key="test"
-        />
       </Head>
       <h3>Map</h3>
       <Map
@@ -77,6 +82,10 @@ const MapComponent = (props: MapComponentProps): JSX.Element => {
         doubleClickZoom={false}
         onDblClick={(evt) => handleDblClick(evt)}
       >
+        <GeolocateControl />
+        <ScaleControl position="bottom-right" />
+        <NavigationControl position="bottom-left" />
+        <FullscreenControl position="top-right" />
         <Marker
           longitude={markerLng}
           latitude={markerLat}
@@ -102,9 +111,12 @@ const MapComponent = (props: MapComponentProps): JSX.Element => {
 
       <div>
         <p>
-          Latitude: {markerLat} Longitude: {markerLng}
+          <strong>Latitude:</strong> {markerLat} | <strong>Longitude:</strong>{" "}
+          {markerLng}
         </p>
-        <button onClick={handleAddBookmark}>Add to bookmarks</button>
+        <Button variant="contained" onClick={handleAddBookmark}>
+          Add to bookmarks
+        </Button>
       </div>
     </div>
   );

@@ -45,15 +45,24 @@
 }
 
 .gridContainer {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .gridContainer > div {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
+  padding: 15px;
 }
 
-.item {
-  width: auto;
+.item:first-child {
+  align-self: flex-start;
+  flex: 1;
+  height: 75vh;
+  padding: 0 15px;
+  border-right: 1px solid #0000003d;
+  margin-right: 15px;
+  overflow-y: scroll;
 }
